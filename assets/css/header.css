@@ -17,9 +17,9 @@
 
 .header__logo::after {
   content: "";
-  background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 10px);
-  display: block;
-  width: 100%;
+  background: linear-gradient(90deg, var(--accent), #16c943, #d23f3f); /* Changed to a linear gradient */
+  display: inline-block; /* Changed from block to inline-block */
+  width: 50%; /* Changed from 100% to 50% */
   right: 10px;
 }
 

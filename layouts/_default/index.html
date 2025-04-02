@@ -29,17 +29,16 @@
           {{- with .Params.Author -}}
             <span class="post-author">{{ . }}</span>
           {{- end -}}
+          {{ if .Params.tags }}
+            <span class="post-tags">
+              {{ range .Params.tags }}
+              #<a href="{{ (urlize (printf "tags/%s/" . )) | absLangURL }}">
+                {{- . -}}
+              </a>&nbsp;
+              {{ end }}
+            </span>
+          {{ end }}
         </div>
-
-        {{ if .Params.tags }}
-          <span class="post-tags">
-            {{ range .Params.tags }}
-            #<a href="{{ (urlize (printf "tags/%s/" . )) | absLangURL }}">
-              {{- . -}}
-            </a>&nbsp;
-            {{ end }}
-          </span>
-        {{ end }}
 
         {{ partial "cover.html" . }}
 
@@ -54,8 +53,8 @@
         </div>
 
         {{ if not .Params.showFullContent }}
-          <div>
-            <a class="read-more button inline" href="{{ .RelPermalink }}">[{{ $.Site.Params.ReadMore }}]</a>
+          <div class="reading-time">
+            <a href="{{ .RelPermalink }}" class="post-link">{{ .ReadingTime }} min read »</a>
           </div>
         {{ end }}
       </article>
